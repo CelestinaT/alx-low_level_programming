@@ -8,7 +8,7 @@
  */
 int main(void)
 {
-	nsigned long int i, j, k, j1, j2, k1, k2;
+	unsigned long int i, j, k, j1, j2, k1, k2;
 
 	j = 1;
 	k = 2;
@@ -32,6 +32,6 @@ int main(void)
 		k2 = k2 + j2;
 		j2 = k2 - j2;
 	}
-	printf("\n")
+	printf("\n");
 	return (0);
 }
