@@ -50,6 +50,7 @@ switch (buffer[6])
 		break;
 	}
 	printf("\n");
+
 }
 /**
 * pABIversion - prints the ABI version
@@ -71,6 +72,7 @@ void pABIversion(char *buffer)
  * pentry - prints the ELF entry point address
  *
  */
+
 void pentry(void)
 {
 	Elf64_Ehdr h;
@@ -166,6 +168,7 @@ void pversion(char *buffer)
 		default:
 			printf("%d <unknown: %%lx>", (int)buffer[6]);
 	}
+
 	printf("\n");
 }
 /**
@@ -193,6 +196,7 @@ void pdata(char *buffer)
 		default:
 			printf("<unknown: %x>", (unsigned int)buffer[5]);
 	}
+
 	printf("\n");
 }
 /**
@@ -267,6 +271,7 @@ void ptitle(char *title)
 *
 * Return: int or exit code
 */
+
 int main(int argc, char **argv)
 {
 	/* declarations */
@@ -291,7 +296,6 @@ int main(int argc, char **argv)
 		if (buffer[i] != match[i])
 			errors("Sorry, it's not an ELF file!\n");
 	}
-
 	/*printing the header! */
 	printf("ELF Header:\n");
 	pmagic(buffer);
@@ -308,5 +312,4 @@ int main(int argc, char **argv)
 
 
 	return (0);
-
 }
