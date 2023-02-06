@@ -71,7 +71,6 @@ void pABIversion(char *buffer)
  * pentry - prints the ELF entry point address
  *
  */
-
 void pentry(void)
 {
 	Elf64_Ehdr h;
@@ -167,7 +166,6 @@ void pversion(char *buffer)
 		default:
 			printf("%d <unknown: %%lx>", (int)buffer[6]);
 	}
-	
 	printf("\n");
 }
 /**
@@ -195,7 +193,6 @@ void pdata(char *buffer)
 		default:
 			printf("<unknown: %x>", (unsigned int)buffer[5]);
 	}
-
 	printf("\n");
 }
 /**
@@ -294,6 +291,7 @@ int main(int argc, char **argv)
 		if (buffer[i] != match[i])
 			errors("Sorry, it's not an ELF file!\n");
 	}
+
 	/*printing the header! */
 	printf("ELF Header:\n");
 	pmagic(buffer);
@@ -305,7 +303,7 @@ int main(int argc, char **argv)
 	ptype(buffer);
 	pentry();
 	/* close and check for close */
-	if (close(fd));
+	if (close(fd))
 		errors("Could not close the file");
 
 
