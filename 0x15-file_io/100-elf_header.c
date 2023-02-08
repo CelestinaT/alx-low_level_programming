@@ -22,7 +22,7 @@ void errors(char *msg)
 /**
   * ptype - prints type
   *
-  *@buffer: contains type info
+  * @buffer: contains type info
   * Return: void
   */
 void ptype(char *buffer)
