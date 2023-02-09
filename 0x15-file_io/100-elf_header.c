@@ -13,7 +13,7 @@ void print_data(unsigned char *e_ident);
 void print_version(unsigned char *e_ident);
 void print_abi(unsigned char *e_ident);
 void print_osabi(unsigned char *e_ident);
-void print_type(unsigned int e_type, unsigned char *e_ident
+void print_type(unsigned int e_type, unsigned char *e_ident);
 void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
 
@@ -25,22 +25,23 @@ void close_elf(int elf);
  */
 void check_elf(unsigned char *e_ident)
 {
-int index;
+	int index;
 
-for (index = 0; index < 4; index++)
-{
-   if (e_ident[index] != 127 &&
-	e_ident[index] != 'E' &&
-	e_ident[index] != 'L' &&
-	e_ident[index] != 'F')
+	for (index = 0; index < 4; index++)
 	{
+		if (e_ident[index] != 127 &&
+				e_ident[index] != 'E' &&
+				e_ident[index] != 'L' &&
+				e_ident[index] != 'F')
+		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
-		exit(98);
+			exit(98);
+		}
 	}
 }
 
 /**
- * printmagic - Prints the magic numbers of an ELF header.
+ * print_magic - Prints the magic numbers of an ELF header.
  * @e_ident: A pointer to an array containing the ELF magic numbers.
  *
  * Description: Magic numbers are separated by spaces.
@@ -229,7 +230,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 	}
 
 	if (e_ident[EI_CLASS] == ELFCLASS32)
-		printf("%#x\n", (unsigned int)e_entry)
+		printf("%#x\n", (unsigned int)e_entry);
 
 	else
 		printf("%#lx\n", e_entry);
@@ -302,4 +303,3 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	close_elf(o);
 	return (0);
 }
-
